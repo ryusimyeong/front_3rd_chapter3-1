@@ -129,7 +129,23 @@ describe('getFilteredEvents', () => {
     const filteredEvents = getFilteredEvents(events, '이벤트 2', new Date('2024-11-01'), 'week');
 
     expect(filteredEvents).toHaveLength(1);
-    expect(filteredEvents).toEqual([events[1]]);
+    expect(filteredEvents).toEqual([
+      {
+        id: '2',
+        title: '이벤트 2',
+        date: '2024-11-01',
+        startTime: '16:30',
+        endTime: '17:30',
+        description: 'Test Description',
+        location: 'Test Location',
+        category: 'Test Category',
+        repeat: {
+          type: 'none',
+          interval: 1,
+        },
+        notificationTime: 10,
+      },
+    ]);
   });
 
   it('주간 뷰에서 2024-07-01 주의 이벤트만 반환한다', () => {

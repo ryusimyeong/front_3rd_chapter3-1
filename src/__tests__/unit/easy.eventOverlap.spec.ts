@@ -239,7 +239,23 @@ describe('findOverlappingEvents', () => {
 
     const overlappedEvents = findOverlappingEvents(newEvent, events);
 
-    expect(overlappedEvents).toEqual([events[0]]);
+    expect(overlappedEvents).toEqual([
+      {
+        id: '1',
+        title: 'Test Event 1',
+        date: '2024-07-01',
+        startTime: '14:30',
+        endTime: '15:30',
+        description: 'Test Description',
+        location: 'Test Location',
+        category: 'Test Category',
+        repeat: {
+          type: 'none',
+          interval: 1,
+        },
+        notificationTime: 10,
+      },
+    ]);
   });
 
   it('겹치는 이벤트가 없으면 빈 배열을 반환한다', () => {
